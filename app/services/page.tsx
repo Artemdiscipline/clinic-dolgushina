@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import { PageHero } from '@/components/site/PageHero';
 import { ServicesCatalog } from '@/components/site/ServicesCatalog';
+import { absoluteUrl } from '@/data/site';
 
 export const metadata: Metadata = {
   title: 'Услуги',
   description:
     'Эстетический и аппаратный уход, лазерная эпиляция, массаж и консультации в Екатеринбурге.',
-  alternates: { canonical: '/services' },
+  alternates: { canonical: absoluteUrl('/services') },
 };
 
 export default function ServicesPage() {

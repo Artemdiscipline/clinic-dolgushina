@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import { PageHero } from '@/components/site/PageHero';
-import { medicalConfig, siteData } from '@/data/site';
+import { absoluteUrl, medicalConfig, siteData } from '@/data/site';
 
 export const metadata: Metadata = {
   title: 'Правовая информация и политика',
   description:
     'Сведения об операторе сайта и политика обработки персональных данных Клиники Дарьи Долгушиной.',
-  alternates: { canonical: '/legal' },
+  alternates: { canonical: absoluteUrl('/legal') },
 };
 
 export default function LegalPage() {

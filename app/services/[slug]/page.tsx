@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { BookingStrip } from '@/components/site/BookingStrip';
-import { publicServices, serviceCategories, siteData } from '@/data/site';
-import Link from 'next/link';
+import { SiteLink } from '@/components/site/SiteLink';
+import { absoluteUrl, publicServices, serviceCategories, siteData } from '@/data/site';
 
 type ServicePageProps = {
   params: Promise<{ slug: string }>;
@@ -20,10 +20,11 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   return {
     title: service.title,
     description: service.summary,
-    alternates: { canonical: '/services/' + service.slug },
+    alternates: { canonical: absoluteUrl('/services/' + service.slug) },
     openGraph: {
       title: service.title,
       description: service.summary,
+      url: absoluteUrl('/services/' + service.slug),
       images: [],
     },
     twitter: {
@@ -44,7 +45,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   return (
     <main id="main-content">
       <article className="service-detail">
-        <Link className="back-link" href="/services">← Все услуги</Link>
+        <SiteLink className="back-link" href="/services">← Все услуги</SiteLink>
         <div className="service-detail-head">
           <div>
             <p className="eyebrow">{category?.title}</p>

@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import { PageHero } from '@/components/site/PageHero';
-import { siteData } from '@/data/site';
+import { absoluteUrl, siteData } from '@/data/site';
 
 export const metadata: Metadata = {
   title: 'Контакты',
   description:
     'Адрес, режим работы, телефон и мессенджеры Клиники Дарьи Долгушиной в центре Екатеринбурга.',
-  alternates: { canonical: '/contacts' },
+  alternates: { canonical: absoluteUrl('/contacts') },
 };
 
 export default function ContactsPage() {

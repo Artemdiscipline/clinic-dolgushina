@@ -7,8 +7,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import { SiteLink } from '@/components/site/SiteLink';
 import { siteData } from '@/data/site';
-import Link from 'next/link';
 
 const navigation = [
   { label: 'Услуги', href: '/services' },
@@ -20,14 +20,14 @@ const navigation = [
 export function Header() {
   return (
     <header className="site-header">
-      <Link className="wordmark" href="/" aria-label="Клиника Дарьи Долгушиной — на главную">
+      <SiteLink className="wordmark" href="/" aria-label="Клиника Дарьи Долгушиной — на главную">
         <span className="wordmark-mark" aria-hidden="true">ДД</span>
         <span>Клиника Дарьи<br />Долгушиной</span>
-      </Link>
+      </SiteLink>
 
       <nav className="header-nav" aria-label="Основная навигация">
         {navigation.map((item) => (
-          <Link href={item.href} key={item.href}>{item.label}</Link>
+          <SiteLink href={item.href} key={item.href}>{item.label}</SiteLink>
         ))}
       </nav>
 
@@ -56,9 +56,9 @@ export function Header() {
             </div>
             <nav className="mobile-nav" aria-label="Мобильная навигация">
               {navigation.map((item) => (
-                <Link href={item.href} key={item.href}>{item.label}<span aria-hidden="true">↗</span></Link>
+                <SiteLink href={item.href} key={item.href}>{item.label}<span aria-hidden="true">↗</span></SiteLink>
               ))}
-              <Link href="/legal">Правовая информация<span aria-hidden="true">↗</span></Link>
+              <SiteLink href="/legal">Правовая информация<span aria-hidden="true">↗</span></SiteLink>
             </nav>
             <div className="menu-sheet-contact">
               <a href={siteData.contacts.phoneHref}>{siteData.contacts.phone}</a>

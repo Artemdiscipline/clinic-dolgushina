@@ -22,6 +22,25 @@ export type Service = {
   publishReady: boolean;
 };
 
+export const deploymentBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+
+export function sitePath(path: string) {
+  if (!deploymentBasePath || !path.startsWith('/')) return path;
+  if (path === '/') return deploymentBasePath + '/';
+  const hasFileExtension = /\.[a-z0-9]+$/i.test(path);
+  return deploymentBasePath + path + (hasFileExtension ? '' : '.html');
+}
+
+export function absoluteUrl(path = '') {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const normalizedPath = path ? '/' + path.replace(/^\//, '') : '';
+  const hasFileExtension = /\.[a-z0-9]+$/i.test(normalizedPath);
+  const routeSuffix =
+    deploymentBasePath && normalizedPath && !hasFileExtension ? '.html' : '';
+  return baseUrl.replace(/\/$/, '') + normalizedPath + routeSuffix;
+}
+
 type MedicalConfig = {
   medicalServicesEnabled: boolean;
   licenseHolder: string;

@@ -1,5 +1,5 @@
 import { siteData } from '@/data/site';
-import Link from 'next/link';
+import { SiteLink } from '@/components/site/SiteLink';
 
 export default function NotFound() {
   return (
@@ -10,8 +10,8 @@ export default function NotFound() {
         Возможно, адрес изменился. Вернитесь на главную или откройте каталог услуг.
       </p>
       <div className="hero-actions">
-        <Link className="button button-primary" href="/">На главную</Link>
-        <Link className="text-link" href="/services">Выбрать услугу ↗</Link>
+        <SiteLink className="button button-primary" href="/">На главную</SiteLink>
+        <SiteLink className="text-link" href="/services">Выбрать услугу ↗</SiteLink>
         <a className="text-link" href={siteData.links.booking} target="_blank" rel="noreferrer">Записаться ↗</a>
       </div>
     </main>

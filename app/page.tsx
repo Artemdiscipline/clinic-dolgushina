@@ -1,9 +1,9 @@
 import { BookingStrip } from '@/components/site/BookingStrip';
 import { Faq } from '@/components/site/Faq';
 import { Reviews } from '@/components/site/Reviews';
-import { approach, publicServices, serviceCategories, siteData } from '@/data/site';
+import { SiteLink } from '@/components/site/SiteLink';
+import { approach, deploymentBasePath, publicServices, serviceCategories, siteData } from '@/data/site';
 import Image from 'next/image';
-import Link from 'next/link';
 
 export default function Home() {
   const featuredServices = publicServices.filter((service) => service.featured);
@@ -33,7 +33,7 @@ export default function Home() {
         </div>
         <figure className="hero-visual">
           <Image
-            src="/hero-editorial.png"
+            src={deploymentBasePath + '/hero-editorial.png'}
             alt="Композиция из матовой керамики, рифлёного стекла и винной ленты"
             width="1120"
             height="1400"
@@ -50,12 +50,12 @@ export default function Home() {
         </div>
         <div className="direction-list">
           {serviceCategories.map((direction, index) => (
-            <Link href="/services" className="direction-row" key={direction.id}>
+            <SiteLink href="/services" className="direction-row" key={direction.id}>
               <span className="direction-index">{String(index + 1).padStart(2, '0')}</span>
               <h3>{direction.title}</h3>
               <p>{direction.description}</p>
               <span className="direction-arrow" aria-hidden="true">↗</span>
-            </Link>
+            </SiteLink>
           ))}
         </div>
       </section>
@@ -89,16 +89,16 @@ export default function Home() {
               <p className="catalog-category">
                 {serviceCategories.find((category) => category.id === service.categoryId)?.navTitle}
               </p>
-              <h3><Link href={'/services/' + service.slug}>{service.shortTitle}</Link></h3>
+              <h3><SiteLink href={'/services/' + service.slug}>{service.shortTitle}</SiteLink></h3>
               <p>{service.summary}</p>
               <div className="featured-card-bottom">
                 <span>{service.duration}</span>
-                <Link href={'/services/' + service.slug} aria-label={'Подробнее: ' + service.title}>↗</Link>
+                <SiteLink href={'/services/' + service.slug} aria-label={'Подробнее: ' + service.title}>↗</SiteLink>
               </div>
             </article>
           ))}
         </div>
-        <Link className="button button-outline" href="/services">Все услуги <span aria-hidden="true">↗</span></Link>
+        <SiteLink className="button button-outline" href="/services">Все услуги <span aria-hidden="true">↗</span></SiteLink>
       </section>
 
       <section className="specialists-preview" aria-labelledby="specialists-title">
@@ -114,7 +114,7 @@ export default function Home() {
               Мы добавим имена, образование, действующую аккредитацию, стаж и
               фотографии после того, как клиника предоставит подтверждающие сведения.
             </p>
-            <Link className="text-link" href="/specialists">Что будет указано <span aria-hidden="true">↗</span></Link>
+            <SiteLink className="text-link" href="/specialists">Что будет указано <span aria-hidden="true">↗</span></SiteLink>
           </div>
         </div>
       </section>

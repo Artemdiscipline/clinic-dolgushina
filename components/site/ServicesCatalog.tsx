@@ -1,8 +1,8 @@
 'use client';
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { SiteLink } from '@/components/site/SiteLink';
 import { publicServices, serviceCategories, siteData, type Service } from '@/data/site';
-import Link from 'next/link';
 
 function ServiceCards({ services }: { services: Service[] }) {
   return (
@@ -13,7 +13,7 @@ function ServiceCards({ services }: { services: Service[] }) {
             <p className="catalog-category">
               {serviceCategories.find((category) => category.id === service.categoryId)?.navTitle}
             </p>
-            <h2><Link href={'/services/' + service.slug}>{service.title}</Link></h2>
+            <h2><SiteLink href={'/services/' + service.slug}>{service.title}</SiteLink></h2>
           </div>
           <p>{service.summary}</p>
           <div className="catalog-meta">
@@ -21,7 +21,7 @@ function ServiceCards({ services }: { services: Service[] }) {
             <span>{service.price ?? 'Стоимость — в Yclients'}</span>
           </div>
           <div className="catalog-actions">
-            <Link className="text-link" href={'/services/' + service.slug}>Подробнее <span aria-hidden="true">↗</span></Link>
+            <SiteLink className="text-link" href={'/services/' + service.slug}>Подробнее <span aria-hidden="true">↗</span></SiteLink>
             <a className="text-link wine" href={siteData.links.booking} target="_blank" rel="noreferrer">
               Записаться <span aria-hidden="true">↗</span>
             </a>

@@ -1,25 +1,25 @@
 import { siteData } from '@/data/site';
-import Link from 'next/link';
+import { SiteLink } from '@/components/site/SiteLink';
 
 export function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-main">
         <div>
-          <Link className="footer-brand" href="/">
+          <SiteLink className="footer-brand" href="/">
             <span className="wordmark-mark" aria-hidden="true">ДД</span>
             <span>{siteData.brand.name}</span>
-          </Link>
+          </SiteLink>
           <p className="footer-note">
             Эстетический уход и понятный выбор процедур в центре Екатеринбурга.
           </p>
         </div>
         <div className="footer-column">
           <p className="footer-label">Навигация</p>
-          <Link href="/services">Услуги</Link>
-          <Link href="/specialists">Специалисты</Link>
-          <Link href="/prices">Цены</Link>
-          <Link href="/contacts">Контакты</Link>
+          <SiteLink href="/services">Услуги</SiteLink>
+          <SiteLink href="/specialists">Специалисты</SiteLink>
+          <SiteLink href="/prices">Цены</SiteLink>
+          <SiteLink href="/contacts">Контакты</SiteLink>
         </div>
         <div className="footer-column">
           <p className="footer-label">Связаться</p>
@@ -37,7 +37,7 @@ export function Footer() {
       <div className="footer-legal">
         <span>© {new Date().getFullYear()} {siteData.brand.name}</span>
         <span>{siteData.legal.operator} · ИНН {siteData.legal.inn} · ОГРНИП {siteData.legal.ogrnip}</span>
-        <Link href="/legal">Правовая информация и политика</Link>
+        <SiteLink href="/legal">Правовая информация и политика</SiteLink>
       </div>
     </footer>
   );

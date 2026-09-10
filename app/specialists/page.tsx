@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import { BookingStrip } from '@/components/site/BookingStrip';
 import { PageHero } from '@/components/site/PageHero';
-import { specialists } from '@/data/site';
+import { absoluteUrl, specialists } from '@/data/site';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Специалисты',
   description:
     'Специалисты Клиники Дарьи Долгушиной. Профили публикуются только после проверки образования и аккредитации.',
-  alternates: { canonical: '/specialists' },
+  alternates: { canonical: absoluteUrl('/specialists') },
 };
 
 export default function SpecialistsPage() {

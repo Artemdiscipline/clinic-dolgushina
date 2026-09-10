@@ -4,7 +4,7 @@ import { Footer } from '@/components/site/Footer';
 import { Header } from '@/components/site/Header';
 import { MobileActions } from '@/components/site/MobileActions';
 import { StructuredData } from '@/components/site/StructuredData';
-import { siteData } from '../data/site';
+import { absoluteUrl, deploymentBasePath, siteData, sitePath } from '../data/site';
 import './globals.css';
 
 const display = Cormorant_Garamond({
@@ -21,30 +21,31 @@ const sans = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? siteData.seo.localFallbackUrl,
-  ),
+  metadataBase: new URL(absoluteUrl()),
   title: {
     default: `${siteData.brand.name} — косметология в Екатеринбурге`,
     template: `%s — ${siteData.brand.name}`,
   },
   description:
     'Эстетическая и аппаратная косметология, лазерная эпиляция и массаж в центре Екатеринбурга. Понятный выбор процедур и онлайн-запись.',
-  icons: { icon: '/icon.svg' },
-  manifest: '/manifest.webmanifest',
-  alternates: { canonical: '/' },
+  icons: { icon: deploymentBasePath + '/icon.svg' },
+  alternates: { canonical: absoluteUrl() },
   openGraph: {
     type: 'website',
     locale: 'ru_RU',
     title: `${siteData.brand.name} — косметология в Екатеринбурге`,
     description:
       'Деликатный уход, аппаратные процедуры, лазерная эпиляция и массаж в центре Екатеринбурга.',
+    url: absoluteUrl(),
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ru">
+      <head>
+        <link rel="manifest" href={sitePath('/manifest.webmanifest')} />
+      </head>
       <body className={display.variable + ' ' + sans.variable}>
         <a className="skip-link" href="#main-content">Перейти к содержанию</a>
         <Header />
